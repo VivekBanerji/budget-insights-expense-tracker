@@ -1,3 +1,4 @@
+import { createRoot } from 'react-dom/client'
 import {
     FaWallet,
     FaArrowUp,
@@ -41,6 +42,8 @@ function Dashboard() {
         { date: "2026-10-04", title: "Petrol", category: "Transport", amount: 200, type: "Spend" },
         { date: "2026-10-03", title: "Phone Recharg", category: "Bills", amount: 699, type: "Spend" },
     ];
+
+
 
     return (
         <div className="dashboard">
@@ -165,17 +168,30 @@ function Dashboard() {
                     <h2>Recent Transactions</h2>
                     <p>Your Recent Transactions</p>
                 </div>
-                {transactions.map((item) => {
-                    return (
-                        <div className="recent-transactions">
-                            <div>
-                                
+
+                {/* Dedicated grid container around the list */}
+                <div className="recent-transactions-grid">
+                    {transactions.map((item, index) => {
+                        let sign;
+                        let color;
+                        if (item.type === "Spend") {
+                            sign = "$ -";
+                            color = "red";
+                        } else {
+                            sign = "$ +";
+                            color = "Green";
+                        }
+
+                        return (
+                            <div key={index} className="transaction-item">
+                                <span>{item.title}</span>
+                                <span style={{ color: color }}>{sign} {item.amount}</span>
+                                <span>{item.date}</span>
+                                <span>{item.category}</span>
                             </div>
-
-                        </div>
-                    )
-                })}
-
+                        );
+                    })}
+                </div>
             </div>
 
         </div>
