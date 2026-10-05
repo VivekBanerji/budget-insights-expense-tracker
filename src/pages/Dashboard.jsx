@@ -31,6 +31,15 @@ function Dashboard() {
         { category: "Transport", spent: 2500, budget: 4000 },
         { category: "Shopping", spent: 3500, budget: 5000 },
         { category: "Bills", spent: 5000, budget: 6000 },
+        { category: "Entertainment", spent: 2000, budget: 4000 },
+    ];
+    const transactions = [
+
+        { date: "2026-10-05", title: "Grocery Store", category: "Food", amount: 2000, type: "Spend" },
+        { date: "2026-10-05", title: "Salary Credit", category: "Salary", amount: 25000, type: "Credit" },
+        { date: "2026-10-04", title: "Credit Card Bill", category: "Bills", amount: 3550, type: "Spend" },
+        { date: "2026-10-04", title: "Petrol", category: "Transport", amount: 200, type: "Spend" },
+        { date: "2026-10-03", title: "Phone Recharg", category: "Bills", amount: 699, type: "Spend" },
     ];
 
     return (
@@ -147,6 +156,24 @@ function Dashboard() {
 
                         </div>
                     );
+                })}
+
+            </div>
+            {/*Recent Transactions */}
+            <div className="recent-transactions-card">
+                <div className="chart-header">
+                    <h2>Recent Transactions</h2>
+                    <p>Your Recent Transactions</p>
+                </div>
+                {transactions.map((item) => {
+                    return (
+                        <div className="recent-transactions">
+                            <div>
+                                
+                            </div>
+
+                        </div>
+                    )
                 })}
 
             </div>
