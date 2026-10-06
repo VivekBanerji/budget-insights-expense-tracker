@@ -158,6 +158,7 @@
     grid-template-columns: 1fr;
   }
 }
+
 /* APP LAYOUT */
 
 .app-layout {
@@ -286,7 +287,7 @@
   gap: 10px;
 }
 
-.profile > svg {
+.profile>svg {
   font-size: 35px;
 }
 
@@ -348,6 +349,7 @@
     padding: 20px;
   }
 }
+
 /* Transactions */
 
 .transactions-page {
@@ -395,7 +397,7 @@
   color: #374151;
 }
 
-.edit{
+.edit {
   border: none;
   padding: 7px 12px;
   border-radius: 6px;
@@ -403,7 +405,8 @@
   background: #eef2ff;
   color: #4f46e5;
 }
-.delete{
+
+.delete {
   border: none;
   margin-left: 5px;
   padding: 7px 12px;
@@ -412,6 +415,7 @@
   background: #fee2e2;
   color: #e54646;
 }
+
 .expense-badge {
   background: #fee2e2;
   color: #ef4444;
