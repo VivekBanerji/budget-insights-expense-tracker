@@ -1,8 +1,28 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./App.css";
+import Layout from "./components/Layout";
 import Dashboard from "./pages/Dashboard";
-import "./css/App.css"
+import Transactions from "./pages/Transactions";
 
 function App() {
-  return <Dashboard />;
+  return (
+    <BrowserRouter>
+      <Routes>
+
+        <Route element={<Layout />}>
+
+          <Route path="/" element={<Dashboard />} />
+
+          <Route
+            path="/transactions"
+            element={<Transactions />}
+          />
+
+        </Route>
+
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;

@@ -163,35 +163,56 @@ function Dashboard() {
 
             </div>
             {/*Recent Transactions */}
+            {/* Recent Transactions */}
             <div className="recent-transactions-card">
+
                 <div className="chart-header">
                     <h2>Recent Transactions</h2>
                     <p>Your Recent Transactions</p>
                 </div>
 
-                {/* Dedicated grid container around the list */}
-                <div className="recent-transactions-grid">
+                <div className="recent-transactions">
+
                     {transactions.map((item, index) => {
+
                         let sign;
-                        let color;
+                        let amountClass;
+
                         if (item.type === "Spend") {
-                            sign = "$ -";
-                            color = "red";
+                            sign = "-";
+                            amountClass = "expense";
                         } else {
-                            sign = "$ +";
-                            color = "Green";
+                            sign = "+";
+                            amountClass = "income";
                         }
 
                         return (
-                            <div key={index} className="transaction-item">
-                                <span>{item.title}</span>
-                                <span style={{ color: color }}>{sign} {item.amount}</span>
-                                <span>{item.date}</span>
-                                <span>{item.category}</span>
+                            <div className="transaction-row" key={index}>
+
+                                <div className="transaction-title">
+                                    <span>{item.title}</span>
+                                </div>
+
+                                <div className="transaction-amount">
+                                    <span className={amountClass}>
+                                        {sign} ₹{item.amount}
+                                    </span>
+                                </div>
+
+                                <div className="transaction-date">
+                                    <span>{item.date}</span>
+                                </div>
+
+                                <div className="transaction-category">
+                                    <span>{item.category}</span>
+                                </div>
+
                             </div>
                         );
                     })}
+
                 </div>
+
             </div>
 
         </div>
