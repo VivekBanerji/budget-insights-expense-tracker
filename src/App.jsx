@@ -3,6 +3,8 @@ import "./App.css";
 import Layout from "./components/Layout";
 import Dashboard from "./pages/Dashboard";
 import Transactions from "./pages/Transactions";
+import Budget from "./pages/Budgets";
+import Analytics from "./pages/Analytics";
 
 function App() {
   return (
@@ -18,6 +20,15 @@ function App() {
           <Route
             path="/transactions"
             element={<Transactions />}
+          />
+          <Route
+            path="/budgets"
+            element={<Budget />}
+          />
+
+          <Route
+            path="/analytics"
+            element={<Analytics />}
           />
 
         </Route>
