@@ -1,4 +1,4 @@
-import { createRoot } from 'react-dom/client'
+import { useFinance } from "../context/FinanceContext";
 import {
     FaWallet,
     FaArrowUp,
@@ -18,6 +18,8 @@ import {
 } from "recharts";
 
 function Dashboard() {
+    const { transactions, totalIncome, totalExpenses, balance } = useFinance();
+    const money = (value) => Number(value || 0).toLocaleString("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 0 });
 
     const monthlyData = [
         { month: "Jan", income: 45000, expense: 28000 },
@@ -33,14 +35,6 @@ function Dashboard() {
         { category: "Shopping", spent: 3500, budget: 5000 },
         { category: "Bills", spent: 5000, budget: 6000 },
         { category: "Entertainment", spent: 2000, budget: 4000 },
-    ];
-    const transactions = [
-
-        { date: "2026-10-05", title: "Grocery Store", category: "Food", amount: 2000, type: "Spend" },
-        { date: "2026-10-05", title: "Salary Credit", category: "Salary", amount: 25000, type: "Credit" },
-        { date: "2026-10-04", title: "Credit Card Bill", category: "Bills", amount: 3550, type: "Spend" },
-        { date: "2026-10-04", title: "Petrol", category: "Transport", amount: 200, type: "Spend" },
-        { date: "2026-10-03", title: "Phone Recharg", category: "Bills", amount: 699, type: "Spend" },
     ];
 
 
@@ -60,7 +54,7 @@ function Dashboard() {
                 <div className="summary-card">
                     <div>
                         <p>Total Balance</p>
-                        <h2>₹42,500</h2>
+                        <h2>{money(balance)}</h2>
                     </div>
                     <FaWallet />
                 </div>
@@ -68,7 +62,7 @@ function Dashboard() {
                 <div className="summary-card">
                     <div>
                         <p>Total Income</p>
-                        <h2>₹60,000</h2>
+                        <h2>{money(totalIncome)}</h2>
                     </div>
                     <FaArrowUp />
                 </div>
@@ -76,7 +70,7 @@ function Dashboard() {
                 <div className="summary-card">
                     <div>
                         <p>Total Expenses</p>
-                        <h2>₹17,500</h2>
+                        <h2>{money(totalExpenses)}</h2>
                     </div>
                     <FaArrowDown />
                 </div>
@@ -84,7 +78,7 @@ function Dashboard() {
                 <div className="summary-card">
                     <div>
                         <p>Total Savings</p>
-                        <h2>₹42,500</h2>
+                        <h2>{money(balance)}</h2>
                     </div>
                     <FaPiggyBank />
                 </div>
@@ -173,7 +167,7 @@ function Dashboard() {
 
                 <div className="recent-transactions">
 
-                    {transactions.map((item, index) => {
+                    {transactions.slice(0, 5).map((item) => {
 
                         let sign;
                         let amountClass;
@@ -187,7 +181,7 @@ function Dashboard() {
                         }
 
                         return (
-                            <div className="transaction-row" key={index}>
+                            <div className="transaction-row" key={item.id}>
 
                                 <div className="transaction-title">
                                     <span>{item.title}</span>
@@ -195,7 +189,7 @@ function Dashboard() {
 
                                 <div className="transaction-amount">
                                     <span className={amountClass}>
-                                        {sign} ₹{item.amount}
+                                        {sign} {money(item.amount)}
                                     </span>
                                 </div>
 

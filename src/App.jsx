@@ -5,9 +5,13 @@ import Dashboard from "./pages/Dashboard";
 import Transactions from "./pages/Transactions";
 import Budget from "./pages/Budgets";
 import Analytics from "./pages/Analytics";
+import Settings from "./pages/Settings";
+import Profile from "./pages/Profile";
+import { FinanceProvider } from "./context/FinanceContext";
 
 function App() {
   return (
+    <FinanceProvider>
     <BrowserRouter>
       <Routes>
 
@@ -30,11 +34,20 @@ function App() {
             path="/analytics"
             element={<Analytics />}
           />
+          <Route
+            path="/settings"
+            element={<Settings />}
+          />
+          <Route
+            path="/profile"
+            element={<Profile />}
+          />
 
         </Route>
 
       </Routes>
     </BrowserRouter>
+    </FinanceProvider>
   );
 }
 

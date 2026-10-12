@@ -1,48 +1,25 @@
 import { NavLink } from "react-router-dom";
-import {
-    FaChartPie,
-    FaExchangeAlt,
-    FaWallet,
-    FaChartLine,
-    FaCog,
-} from "react-icons/fa";
+import { FaChartPie, FaExchangeAlt, FaWallet, FaChartLine, FaCog, FaUserCircle } from "react-icons/fa";
 
 function Sidebar() {
-    return (
-        <aside className="sidebar">
-            <div className="sidebar-logo">
-                <FaWallet />
-                <span>Budget Insights</span>
-            </div>
-
-            <nav className="sidebar-nav">
-                <NavLink to="/" end>
-                    <FaChartPie />
-                    <span>Dashboard</span>
-                </NavLink>
-
-                <NavLink to="/transactions">
-                    <FaExchangeAlt />
-                    <span>Transactions</span>
-                </NavLink>
-
-                <NavLink to="/budgets">
-                    <FaWallet />
-                    <span>Budgets</span>
-                </NavLink>
-
-                <NavLink to="/analytics">
-                    <FaChartLine />
-                    <span>Analytics</span>
-                </NavLink>
-
-                <NavLink to="/settings">
-                    <FaCog />
-                    <span>Settings</span>
-                </NavLink>
-            </nav>
-        </aside>
-    );
+  return (
+    <aside className="sidebar">
+      <div className="sidebar-logo"><span className="brand-mark"><FaWallet /></span><span>Budget Insights</span></div>
+      <div className="sidebar-section-label">WORKSPACE</div>
+      <nav className="sidebar-nav">
+        <NavLink to="/" end><FaChartPie /><span>Dashboard</span></NavLink>
+        <NavLink to="/transactions"><FaExchangeAlt /><span>Transactions</span></NavLink>
+        <NavLink to="/budgets"><FaWallet /><span>Budgets</span></NavLink>
+        <NavLink to="/analytics"><FaChartLine /><span>Analytics</span></NavLink>
+      </nav>
+      <div className="sidebar-section-label sidebar-bottom-label">PREFERENCES</div>
+      <nav className="sidebar-nav">
+        <NavLink to="/profile"><FaUserCircle /><span>My profile</span></NavLink>
+        <NavLink to="/settings"><FaCog /><span>Settings</span></NavLink>
+      </nav>
+      <div className="sidebar-bottom-card"><div className="sidebar-bottom-icon">₹</div><div><strong>Build better habits</strong><span>Small steps add up.</span></div></div>
+    </aside>
+  );
 }
 
 export default Sidebar;

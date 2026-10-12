@@ -1,3 +1,4 @@
+import { useFinance } from "../context/FinanceContext";
 import {
     BarChart,
     Bar,
@@ -10,6 +11,9 @@ import {
 } from "recharts";
 
 function Analytics() {
+  const { totalIncome, totalExpenses } = useFinance();
+  const totalSavings = totalIncome - totalExpenses;
+  const money = (value) => Number(value || 0).toLocaleString("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 0 });
 
     const monthlyData = [
         {
@@ -62,17 +66,17 @@ function Analytics() {
 
                 <div className="analytics-card">
                     <p>Total Income</p>
-                    <h2>₹3,18,000</h2>
+                    <h2>{money(totalIncome)}</h2>
                 </div>
 
                 <div className="analytics-card">
                     <p>Total Expenses</p>
-                    <h2>₹1,35,500</h2>
+                    <h2>{money(totalExpenses)}</h2>
                 </div>
 
                 <div className="analytics-card">
                     <p>Total Savings</p>
-                    <h2>₹1,82,500</h2>
+                    <h2>{money(totalSavings)}</h2>
                 </div>
 
             </div>
