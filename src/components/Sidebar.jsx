@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { FaChartPie, FaExchangeAlt, FaWallet, FaChartLine, FaCog, FaUserCircle } from "react-icons/fa";
+import { FaChartPie, FaExchangeAlt, FaWallet, FaChartLine, FaCog, FaUserCircle, FaCalendarAlt, FaReceipt, FaMoneyBillWave, FaRobot } from "react-icons/fa";
 
 function Sidebar() {
   return (
@@ -11,6 +11,10 @@ function Sidebar() {
         <NavLink to="/transactions"><FaExchangeAlt /><span>Transactions</span></NavLink>
         <NavLink to="/budgets"><FaWallet /><span>Budgets</span></NavLink>
         <NavLink to="/analytics"><FaChartLine /><span>Analytics</span></NavLink>
+        <NavLink to="/calendar"><FaCalendarAlt /><span>Spending calendar</span></NavLink>
+        <NavLink to="/loans"><FaMoneyBillWave /><span>Loans & EMIs</span></NavLink>
+        <NavLink to="/receipts"><FaReceipt /><span>Bill scanner</span></NavLink>
+        <NavLink to="/coach"><FaRobot /><span>AI money coach</span></NavLink>
       </nav>
       <div className="sidebar-section-label sidebar-bottom-label">PREFERENCES</div>
       <nav className="sidebar-nav">

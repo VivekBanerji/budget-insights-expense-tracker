@@ -7,6 +7,10 @@ import Budget from "./pages/Budgets";
 import Analytics from "./pages/Analytics";
 import Settings from "./pages/Settings";
 import Profile from "./pages/Profile";
+import SpendingCalendar from "./pages/SpendingCalendar";
+import Loans from "./pages/Loans";
+import ReceiptScanner from "./pages/ReceiptScanner";
+import MoneyCoach from "./pages/MoneyCoach";
 import { FinanceProvider } from "./context/FinanceContext";
 
 function App() {
@@ -38,10 +42,11 @@ function App() {
             path="/settings"
             element={<Settings />}
           />
-          <Route
-            path="/profile"
-            element={<Profile />}
-          />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/calendar" element={<SpendingCalendar />} />
+          <Route path="/loans" element={<Loans />} />
+          <Route path="/receipts" element={<ReceiptScanner />} />
+          <Route path="/coach" element={<MoneyCoach />} />
 
         </Route>
 

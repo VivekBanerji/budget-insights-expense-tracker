@@ -21,6 +21,14 @@ function readTransactions() {
 
 export function FinanceProvider({ children }) {
   const [transactions, setTransactions] = useState(readTransactions);
+  const [loans, setLoans] = useState(() => {
+    try { return JSON.parse(localStorage.getItem("budget-insights-loans") || "[]"); }
+    catch { return []; }
+  });
+  useEffect(() => { localStorage.setItem("budget-insights-loans", JSON.stringify(loans)); }, [loans]);
+  const addLoan = (loan) => setLoans((current) => [{ ...loan, id: Date.now(), active: true }, ...current]);
+  const toggleLoan = (id) => setLoans((current) => current.map((loan) => loan.id === id ? { ...loan, active: !loan.active } : loan));
+  const deleteLoan = (id) => setLoans((current) => current.filter((loan) => loan.id !== id));
 
   useEffect(() => {
     localStorage.setItem("budget-insights-transactions", JSON.stringify(transactions));
@@ -42,7 +50,7 @@ export function FinanceProvider({ children }) {
     .reduce((sum, item) => sum + Number(item.amount), 0);
 
   return (
-    <FinanceContext.Provider value={{ transactions, setTransactions, addTransaction, deleteTransaction, totalIncome, totalExpenses, balance: totalIncome - totalExpenses }}>
+    <FinanceContext.Provider value={{ transactions, setTransactions, addTransaction, deleteTransaction, totalIncome, totalExpenses, balance: totalIncome - totalExpenses, loans, addLoan, toggleLoan, deleteLoan }}>
       {children}
     </FinanceContext.Provider>
   );
